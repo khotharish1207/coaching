@@ -1,0 +1,47 @@
+{
+  "name": "loginApp",
+  "version": "1.0.0",
+  "description": "Simple Login App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "watch": "nodemon",
+    "lint": "eslint"
+  },
+  "author": "Deepak Salve, Harish Khot, Amey Desai",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "bluebird": "^3.3.5",
+    "body-parser": "^1.15.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.13.0",
+    "express-validator": "^2.20.4",
+    "jquery": "^2.2.4",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.4.15",
+    "morgan": "^1.7.0",
+    "nodemailer": "^2.4.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "require-dir": "^0.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-less": "^3.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.4",
+    "pump": "^1.0.1"
+  }
+}
