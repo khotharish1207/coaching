@@ -1,0 +1,30 @@
+
+// This maps error constants with error codes.
+module.exports = {
+    // User related error codes
+    INVALID_API_KEY: '100',
+    INVALID_TOKEN: '102',
+    NO_TOKEN: '103',
+    INVALID_USER: '104',
+    INVALID_EMAIL_ADDRESS: '105',
+    REGISTRATION_FIELDS_MISSING: '106',
+    LOGIN_FAILED: '107',
+    ERROR_IN_USER_ADDITION: '108',
+    PASSWORD_DOES_NOT_MATCH: '109',
+    CONFIRM_PASSWORD_NOT_SAME: '110',
+    ERROR_IN_UPDATE_PASSWORD: '111',
+    NO_USERS: '112',
+    ERROR_WHILE_MAIL_SENDING: '113',
+    TOKEN_EXPIRED: '114',
+    PLEASE_TRY_AGAIN: '115',
+    EMAIL_ALREADY_EXIST: '116',
+
+    FB_TOKEN_EXPIRED: '117',
+    FB_PROFILE_WITHOUT_EMAIL: '118',
+
+    AUTHENTICATION_FAILED: '401',
+
+    // Server related error codes
+    NOT_FOUND: '404',
+    UNKNOWN_ERROR: '520'
+};

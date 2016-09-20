@@ -1,26 +1,22 @@
+
+// This file contains String constats.
 module.exports = {
-    // flash_msg: 
-    flash_invalidToken_msg:  "Invalid token, Please try again.",
-    flash_successfullyRegistered_msg: "Now you are successfully registered. Please check your mail to confirm.",
-    flash_pleaseTryAgain_msg: "Please try again.",
-    flash_notConfirmedUser_msg: "Your not confirmed user. Please check your mail to confirm.",
-    flash_invalidPassword_msg: "Invalid password",
-    flash_logout_msg: "You are logged out",
-    flash_passwordReset_msg: "Password reset link has been sent to your email",
-    flash_passwordReseted_msg: "Password successfully updated",
-    flash_profile_updated_msg: "Profile updated successfully",
-    flash_UserDeleted_msg: "Your account is Deleted contact Admin",
-   
-    // validation_msg: 
-    validation_nameRequired_msg: 'Name is required',
-    validation_emailRequired_msg: 'Email is required',
-    validation_emailNotValid_msg: 'Email is not valid',
-    validation_usernameRequired_msg: 'Username is required',
-    validation_passwordRequired_msg: 'Password is required',
-    validation_passwordNotMatch_msg: 'Passwords do not match',
-    
-    
-    // mailSubjects_: 
-    mailSubjects_confirmationMail: 'Confirmation for the AppName.',
-    mailSubjects_passwordResetMail: 'Password reset mail'
+    LOGOUT_SUCCESS: 'You have successfully logged out.',
+    LOGIN_SUCCESS: 'You have successfully logged in.',
+    USER_ADDED_SUCCESSFULLY: 'User created successfully.',
+    USER_ACTIVATED: 'Specified user is activated.',
+    USER_DEACTIVATED: 'Specified user is deactivated.',
+    PASSWORD_UPDATED: 'Password successfully updated.',
+    PASSWORD_RESET_MAIL_SENT: 'Password reset mail has been sent.',
+
+    // Activity constants
+    ACTIVATION_ACTIVITY: 'User activation',
+    DEACTIVATION_ACTIVITY: 'User deactivation',
+    PASSWORD_CHANGE_ACTIVITY: 'User password change',
+    ACCOUNT_CONFIRMATION_ACTIVITY: 'User account confirmation',
+    FORGOT_PASSWORD_ACTIVITY: 'Forgot password',
+    PASSWORD_RESET_ACTIVITY: 'User password reset',
+
+    TOKEN_EXPIRATION_TIME: 60 * 60 * 24,
+    VALID_EMAIL_REGEX: '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'
 };

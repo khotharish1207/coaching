@@ -4,10 +4,17 @@
  * (.i.e. All files from 'routes' dir) in form of key: value pair
  * (i.e. {users: require('./users'))
  */
-var Routes    = require('require-dir')(),
+var Routes = require('require-dir')(),
 // Gives all basic configuration of an application.
-  appConfig = require('../config/config'),
-  main = require('./main');
+    main   = require('./main');
+
+function ensureAuthenticated(req, res, next) {
+  if(req.isAuthenticated()){
+    return next();
+  } else {
+    res.redirect('/users/login');
+  }
+}
 
 module.exports = function(app) {
   // The below function

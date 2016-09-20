@@ -11,6 +11,10 @@ Router.get('/login', function (req, res) {
     res.render('login');
 });
 
+Router.get('/register', function (req, res) {
+    res.render('register');
+});
+
 Router.get('/gallery', function (req, res) {
     res.render('gallery');
 });

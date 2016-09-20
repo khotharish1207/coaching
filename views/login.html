@@ -1,6 +1,5 @@
-<h2 class = 'page-header'>Account Login</h2>
-
-<form method="post" action="/users/login">
+<form class="form" method="post" action="/users/login">
+    <h2 class = 'page-header'>Account Login</h2>
     <div class = 'form-group'>
         <label>Username</label>
         <input type = 'text' class = 'form-control' name="username" placeholder="usename">
@@ -9,5 +8,8 @@
         <label>PassWord</label>
         <input type="password" class="form-control" name='password' placeholder="password">
     </div>
-    <button type="submit" class="btn btn-info">Submit</button>
+    <div class = "form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+        <a href="register">Create account </a>
+    </div>
 </form>

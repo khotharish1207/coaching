@@ -19,6 +19,9 @@ module.exports = {
     database: {
         host: 'localhost',
         port: '',
-        dbName: 'project'
-    }
+        dbName: 'mycoaching'
+    },
+    appClient: {
+        baseUrl: 'http://localhost:3000'
+    },
 };
