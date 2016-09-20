@@ -39,28 +39,21 @@ Router.post('/register', function (req, res) {
                     res.send(apiHandler.generateErrorResponse('UNKNOWN_ERROR'));
                 }
             } else {
-                confirmationToken = jWT.getConfirmationToken(newUser);
-                users.updateConfirmationToken(confirmationToken, function (err, userDetails) {
-                    if (err) {
-                        res.send(apiHandler.generateErrorResponse('UNKNOWN_ERROR'));
-                    } else {
-                        confirmationUrl = '/users/confirm?token=' + confirmationToken;
-                        mailer.sendConfirmationMail(name, email, confirmationUrl)
-                            .then(function (success) {
-                                req.flash('success_msg', "User created");
-                                res.redirect('/login');
-                            })
-                            .catch(function (err) {
-                                user.remove();
-                                res.send(apiHandler.getErrorMessage('ERROR_IN_USER_ADDITION'));
-                            });
+                    confirmationUrl = '/users/confirm?id=' + user._id;
+                    mailer.sendConfirmationMail(name, email, confirmationUrl)
+                        .then(function (success) {
+                            req.flash('success_msg', "User created");
+                            res.redirect('/login');
+                        })
+                        .catch(function (err) {
+                            user.remove();
+                            req.flash('error_msg', "Error in user creation");
+                            res.redirect('/register');
+                        });
                     }
-                });
-            }
         });
     }
 });
-
 
 //  Local authentication
 Passport.use(new LocalStrategy(
@@ -197,35 +190,37 @@ Router.post('/changepassword', function (req, res) {
         res.send(apiHandler.generateErrorResponse('CONFIRM_PASSWORD_NOT_SAME'));
     }
 });
-
+*/
 Router.get('/confirm', function (req, res) {
-    var token = req.query.token || req.headers['x-access-token'];
-    jWT.isValidToken(token, function (err, decoded) {
+    users.getUserById(req.query.id, function (err, user) {
         if (err) {
-            res.send(apiHandler.generateErrorResponse('INVALID_TOKEN'));
-        } else {
-            users.getUserByConfirmationToken(token, function (err, user) {
-                if (err && !user) {
-                    res.send(apiHandler.generateErrorResponse('INVALID_USER'));
-                } else {
-                    user.isVerified = true;
-                    user.confirmationToken = '';
-                    user.save(function (err) {
-                        if (err) {
-                            var errorLog = new logger({
-                                details: err,
-                                activity: stringConstant.ACCOUNT_CONFIRMATION_ACTIVITY
-                            });
-                            errorLog.save();
-                        }
-                    });
-                    res.send(apiHandler.getSuccessMessage('USER_ACTIVATED'));
-                }
+            var errorLog = new logger({
+                details: err,
+                activity: "account confirmation"
             });
+            errorLog.save();
+            req.flash('error_msg', StringConstants.flash_invalidToken_msg);
+            res.redirect("/login")
         }
+        user.isVerified = true;
+        user.save(function (err) {
+            if (err) {
+                if (err) {
+                    var errorLog = new logger({
+                        details: err,
+                        activity: "account confirmation"
+                    });
+                    errorLog.save();
+                }
+                req.flash('error_msg', StringConstants.flash_invalidToken_msg);
+                res.redirect("/login");
+            }
+            res.redirect("/login");
+        });
     });
 });
 
+/*
 Router.post('/forgotpassword', function (req, res) {
     var reqBody = req.body,
         email = reqBody.email,
